@@ -2,8 +2,6 @@ import unittest
 
 from app import app
 
-
-
 class ProjectTests(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
