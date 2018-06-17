@@ -1,4 +1,5 @@
 drop table if exists users;
+drop table if exists cargos;
 
 create table users (
   id integer primary key autoincrement,
@@ -30,9 +31,12 @@ create table if not exists candidatos (
   FOREIGN KEY(partido_id) REFERENCES partidos(id)
 );
 
-create table if not exists cargos (
+create table cargos (
   id integer primary key autoincrement,
-  nome VARCHAR(25) not null
+  nome VARCHAR(25) not null,
+  descricao text,
+  poder text,
+  local_trabalho text
 );
 
 create table if not exists partidos (

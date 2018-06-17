@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Cargos</h1>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Poder</th>
+        <th>Local de Trabalho</th>
+      </tr>
+      {% for cargo in cargos%}
+      <tr>
+        <td>{{ cargo.nome }}</td>
+        <td>{{ cargo.descricao }}</td>
+        <td>{{ cargo.poder }}</td>
+        <td>{{ cargo.local_trabalho }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
