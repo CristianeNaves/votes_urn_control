@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Partidos</h1>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Data de Fundação</th>
+        <th>Líder</th>
+      </tr>
+      {% for partido in partidos%}
+      <tr>
+        <td>{{ partido.nome }}</td>
+        <td>{{ partido.data_fundacao }}</td>
+        <td>{{ partido.lider }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
