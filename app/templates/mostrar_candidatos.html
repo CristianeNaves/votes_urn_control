@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Cargos</h1>
+    <table>
+      <tr>
+        <th>Foto</th>
+        <th>Nome</th>
+        <th>Vice</th>
+        <th>Cargo</th>
+        <th>Partido</th>
+      </tr>
+      {% for candidato in candidatos%}
+      <tr>
+        <td>{{ candidato.foto }}</td>
+        <td>{{ candidato.nome }}</td>
+        <td>{{ candidato.vice_id }}</td>
+        <td>{{ candidato.cargo_id }}</td>
+        <td>{{ candidato.partido_id }}</td>
+        <td>
+          <a href="/editar_candidato/{{ candidato.id }}" method="post">Editar</a>
+        </td>
+        <td>
+          <a href="/deletar_candidato/{{ candidato.id }}" method="post">Excluir</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

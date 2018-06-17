@@ -7,7 +7,6 @@ cargos_blueprint = Blueprint('cargos', __name__, template_folder='templates')
 def mostrar_cargos():
     cargos = buscar_cargos()
     return render_template("mostrar_cargos.html", cargos = cargos)
-    pass
 
 @cargos_blueprint.route('/cadastrar_cargo')
 def cadastrar_cargo():

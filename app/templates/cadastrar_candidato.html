@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>UrnVotes</title>
+  </head>
+  <body>
+    <h1>Cadastrar Candidato</h1>
+    <form action="/criar_candidato" method="post">
+      <fieldset>
+        <div>
+          <label for="nome">Nome:</label>
+          <input type="text" name="nome">
+        </div>
+        <div>
+          <label for="foto">Foto:</label>
+          <input type="file" name="foto" accept="image/*">
+        </div>
+
+        <div>
+          <label for="vice">Vice:</label>
+          <select name="vice">
+            {% for candidato_vice in candidatos_vice %}
+            <option value="{{ candidato_vice.id }}">{{ candidato_vice.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label for="cargo">Cargo:</label>
+          <select name="cargo">
+            {% for cargo in cargos %}
+            <option value="{{ cargo.id }}">{{ cargo.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label for="partido">Partido:</label>
+          <select name="partido">
+            {% for partido in partidos %}
+            <option value="{{ partido.id }}">{{ partido.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+    </fieldset>
+    </form>
+  </body>
+</html>
+
+<!--
+<select name="select">
+  <option value="valor1">Valor 1</option>
+  <option value="valor2" selected>Valor 2</option>
+  <option value="valor3">Valor 3</option>
+</select>
+-->
