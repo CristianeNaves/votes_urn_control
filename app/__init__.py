@@ -6,8 +6,10 @@ import sqlite3
 app = Flask(__name__, instance_relative_config=True)
 
 from app.users.views import users_blueprint
+from app.votos.views import votos_blueprint
 
 app.register_blueprint(users_blueprint)
+app.register_blueprint(votos_blueprint)
 
 DATABASE = './app/database.db'
 
