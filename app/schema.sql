@@ -1,5 +1,6 @@
 drop table if exists users;
 drop table if exists cargos;
+drop table if exists engenheiros;
 
 create table users (
   id integer primary key autoincrement,
@@ -46,6 +47,12 @@ create table if not exists partidos (
   nome VARCHAR(25) not null
 );
 
+create table engenheiros (
+  cpf integer primary key,
+  crea VARCHAR(45),
+  nome VARCHAR(45) not null,
+  formacao VARCHAR(45)
+);
 
 --Criando tabela para testar a entidade voto - esta imcompleta
 
@@ -59,9 +66,6 @@ create table fabricantes (
 
 );
 
-create table engenheiros (
-
-);
 
 create table responsavel (
 
