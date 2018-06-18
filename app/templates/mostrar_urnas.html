@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Urnas</h1>
+    <table>
+      <tr>
+        <th>id:</th>
+        <th>Local:</th>
+      </tr>
+      {% for urna in urnas %}
+      <tr>
+        <td>{{ urna.id }}</td>
+        <td>{{ urna.local }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

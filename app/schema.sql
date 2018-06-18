@@ -68,7 +68,8 @@ create table fabricantes (
 
 create table if not exists urnas (
   id integer primary key autoincrement,
-  local VARCHAR(45)
+  local VARCHAR(45),
+  FOREIGN KEY(fabricante_id) REFERENCES fabricantes(id)
 );
 
 /*
