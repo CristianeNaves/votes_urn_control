@@ -6,6 +6,9 @@ drop table if exists funcoes;
 drop table if exists usuarios;
 drop table if exists engenheiros;
 drop table if exists fabricantes;
+drop table if exists cartorios;
+drop table if exists estado;
+drop table if exists log;
 
 create table users (
   id integer primary key autoincrement,
@@ -112,29 +115,49 @@ create table if not exists urnas (
   FOREIGN KEY(fabricante_id) REFERENCES fabricantes(id)
 );
 
+create table cartorios(
+  id integer primary key autoincrement,
+  nome VARCHAR(45),
+  estado_id integer,
+  FOREIGN KEY(estado_id) REFERENCES estado(id)
+);
+
+create table estado(
+  id integer primary key autoincrement,
+  nome VARCHAR(50),
+  sigla char(2),
+  cargos_id integer,
+  cartorios_id integer,
+  FOREIGN KEY(cargos_id) REFERENCES cargos(id),
+  FOREIGN KEY(cartorios_id) REFERENCES cartorios(id)
+);
+
+create table usuario_logs(
+  log_id integer,
+  usuarios_id integer,
+  FOREIGN KEY(log_id) REFERENCES logs(id),
+  FOREIGN KEY(usuarios_id) REFERENCES usuarios(id)
+);
+
+create table logs(
+  id integer primary key autoincrement,
+  data_ DATETIME,
+  tipo_requisicao VARCHAR(45),	
+  parametros VARCHAR(45),	
+  resultado VARCHAR(45)	
+);
+
+
+
 /*
 
 create table responsavel (
 
 );
 
-create table cartorios (
-
-);
-
-create table estado (
-
-);
 
 create table cargos_estado (
 
 );
 
-create table logs (
-
-);
-
-create table usuario_logs(
-
-);
 */
