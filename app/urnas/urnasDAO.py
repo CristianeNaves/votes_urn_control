@@ -3,8 +3,9 @@ import sqlite3
 DATABASE = './app/database.db'
 
 class Urna:
-    def __init__(self, local, id=None):
+    def __init__(self, local, fabricante_id, id=None):
         self.local = local
+        self.fabricante_id = fabricante_id
         self.id = id
 
 def salvar_urna(urna):

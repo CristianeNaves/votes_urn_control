@@ -12,8 +12,8 @@
           <input type="text" name="local">
         </div>
         <div>
-          <label for="fabricante">Fabricante:</label>
-          <select name="fabricante">
+          <label for="fabricante_id">Fabricante:</label>
+          <select name="fabricante_id">
             {% for fab in fabricantes %}
             <option value="{{ fab.id }}">{{ fab.empresa }}</option>
             {% endfor %}
