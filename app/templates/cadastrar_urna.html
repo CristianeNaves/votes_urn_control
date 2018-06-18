@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cadastrar Urna</title>
+  </head>
+  <body>
+    <form action="/criar_urna" method="post">
+      <fieldset>
+        <div>
+          <label for="local">Local:</label>
+          <input type="text" name="local">
+        </div>
+        <div>
+          <label for="fabricante_id">Fabricante:</label>
+          <select name="fabricante_id">
+            {% for fab in fabricantes %}
+            <option value="{{ fab.id }}">{{ fab.empresa }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+    </fieldset>
+    </form>
+  </body>
+</html>

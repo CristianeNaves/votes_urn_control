@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Engenheiros</title>
+  </head>
+  <body>
+    <h1>Engenheiros</h1>
+    <table>
+      <tr>
+        <th>CPF</th>
+        <th>CREA</th>
+        <th>Nome</th>
+        <th>Formação</th>
+      </tr>
+      {% for eng in engenheiros%}
+      <tr>
+        <td>{{ eng.cpf }}</td>
+        <td>{{ eng.crea }}</td>
+        <td>{{ eng.nome }}</td>
+        <td>{{ eng.formacao }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
