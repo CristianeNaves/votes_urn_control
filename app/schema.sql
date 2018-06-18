@@ -1,6 +1,7 @@
 drop table if exists users;
 drop table if exists cargos;
 drop table if exists engenheiros;
+drop table if exists fabricantes;
 
 create table users (
   id integer primary key autoincrement,
@@ -54,6 +55,15 @@ create table engenheiros (
   formacao VARCHAR(45)
 );
 
+create table fabricantes (
+  id integer primary key autoincrement,
+  local VARCHAR(45),
+  data_fabricacao DATETIME,
+  empresa VARCHAR(45),
+  FOREIGN KEY(engenheiro_cpf) REFERENCES engenheiros(cpf)
+);
+
+
 --Criando tabela para testar a entidade voto - esta imcompleta
 
 create table if not exists urnas (
@@ -62,10 +72,6 @@ create table if not exists urnas (
 );
 
 /*
-create table fabricantes (
-
-);
-
 
 create table responsavel (
 
