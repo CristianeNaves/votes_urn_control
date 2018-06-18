@@ -11,6 +11,14 @@
           <label for="local">Local:</label>
           <input type="text" name="local">
         </div>
+        <div>
+          <label for="fabricante">Fabricante:</label>
+          <select name="fabricante">
+            {% for fab in fabricantes %}
+            <option value="{{ fab.id }}">{{ fab.empresa }}</option>
+            {% endfor %}
+          </select>
+        </div>
         <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
     </fieldset>
     </form>

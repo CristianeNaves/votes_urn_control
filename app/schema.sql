@@ -60,6 +60,7 @@ create table fabricantes (
   local VARCHAR(45),
   data_fabricacao DATETIME,
   empresa VARCHAR(45),
+  engenheiro_cpf integer not null,
   FOREIGN KEY(engenheiro_cpf) REFERENCES engenheiros(cpf)
 );
 
@@ -69,6 +70,7 @@ create table fabricantes (
 create table if not exists urnas (
   id integer primary key autoincrement,
   local VARCHAR(45),
+  fabricante_id integer not null,
   FOREIGN KEY(fabricante_id) REFERENCES fabricantes(id)
 );
 

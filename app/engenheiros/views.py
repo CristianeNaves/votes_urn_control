@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, request
-from .engenheirosDAO import Engenheiro, get_engenheiros
+from .engenheirosDAO import Engenheiro, get_engenheiros, salvar_engenheiro
 
 engenheiros_blueprint = Blueprint('engenheiros', __name__, template_folder='templates')
 

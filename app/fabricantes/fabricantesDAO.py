@@ -13,7 +13,7 @@ class Fabricante:
 def salvar_fabricante(fabricante):
     con = sqlite3.connect(DATABASE)
     cur = con.cursor()
-    cur.execute("INSERT INTO fabricantes (local, data_fabricacao, empresa, engenheiro_cpf, id) VALUES (?,?,?,?,?)", (fabricante.local, fabricante.data_fabricacao, fabricante.empresa, fabricante.engenheiro_cpf, fabricante.id))
+    cur.execute("INSERT INTO fabricantes (local, data_fabricacao, empresa, engenheiro_cpf) VALUES (?,?,?,?)", (fabricante.local, fabricante.data_fabricacao, fabricante.empresa, fabricante.engenheiro_cpf))
     con.commit()
     con.close()
 
@@ -23,7 +23,7 @@ def get_fabricantes():
     cur = con.cursor()
     cur.execute("select * from fabricantes")
     for fabricante in cur:
-        fabricante = Fabricante(local = fabricantes[1], data_fabricacao = fabricantes[2] , empresa = fabricantes[3], engenheiro_cpf = fabricantes[4], id = fabricantes[0])
-        engenheiros.append(fabricante)
+        fabricante = Fabricante(local = fabricante[1], data_fabricacao = fabricante[2] , empresa = fabricante[3], engenheiro_cpf = fabricante[4], id=fabricante[0])
+        fabricantes.append(fabricante)
     con.close()
     return fabricantes

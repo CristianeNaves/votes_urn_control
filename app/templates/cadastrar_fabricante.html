@@ -19,6 +19,14 @@
           <label for="empresa">Empresa:</label>
           <input type="text" name="empresa">
         </div>
+        <div>
+          <label for="engenheiro_cpf">Engenheiro:</label>
+          <select name="engenheiro_cpf">
+            {% for eng in engenheiros %}
+            <option value="{{ eng.cpf }}">{{ eng.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
         <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
     </fieldset>
     </form>

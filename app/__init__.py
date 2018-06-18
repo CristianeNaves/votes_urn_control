@@ -10,12 +10,16 @@ from app.votos.views import votos_blueprint
 from app.partidos.views import partidos_blueprint
 from app.cargos.views import cargos_blueprint
 from app.engenheiros.views import engenheiros_blueprint
+from app.fabricantes.views import fabricantes_blueprint
+from app.urnas.views import urnas_blueprint
 
 app.register_blueprint(users_blueprint)
 app.register_blueprint(votos_blueprint)
 app.register_blueprint(partidos_blueprint)
 app.register_blueprint(cargos_blueprint)
 app.register_blueprint(engenheiros_blueprint)
+app.register_blueprint(fabricantes_blueprint)
+app.register_blueprint(urnas_blueprint)
 
 DATABASE = './app/database.db'
 
