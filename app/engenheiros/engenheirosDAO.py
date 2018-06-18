@@ -9,6 +9,13 @@ class Engenheiro:
         self.formacao = formacao
         self.cpf = cpf
 
+def salvar_engenheiro(engenheiro):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("INSERT INTO engenheiros (crea, nome, formacao, cpf) VALUES (?,?,?,?)", (engenheiro.crea, engenheiro.nome, engenheiro.formacao, engenheiro.cpf))
+    con.commit()
+    con.close()
+
 def get_engenheiros():
     engenheiros = []
     con = sqlite3.connect(DATABASE)
