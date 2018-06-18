@@ -9,16 +9,23 @@ from app.users.views import users_blueprint
 from app.votos.views import votos_blueprint
 from app.partidos.views import partidos_blueprint
 from app.cargos.views import cargos_blueprint
+from app.engenheiros.views import engenheiros_blueprint
+from app.fabricantes.views import fabricantes_blueprint
+from app.urnas.views import urnas_blueprint
 from app.candidatos.views import candidatos_blueprint
+from app.usuarios.views import usuarios_blueprint
 from app.empresas.views import empresas_blueprint
 from app.funcoes.views import funcoes_blueprint
 from app.grupos.views import grupos_blueprint
-from app.usuarios.views import usuarios_blueprint
+
 
 app.register_blueprint(users_blueprint)
 app.register_blueprint(votos_blueprint)
 app.register_blueprint(partidos_blueprint)
 app.register_blueprint(cargos_blueprint)
+app.register_blueprint(engenheiros_blueprint)
+app.register_blueprint(fabricantes_blueprint)
+app.register_blueprint(urnas_blueprint)
 app.register_blueprint(candidatos_blueprint)
 app.register_blueprint(empresas_blueprint)
 app.register_blueprint(funcoes_blueprint)
