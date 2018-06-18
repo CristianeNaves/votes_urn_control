@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Empresas</h1>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Localização</th>
+        <th>Setor</th>
+      </tr>
+      {% for empresa in empresas%}
+      <tr>
+        <td>{{ empresa.nome }}</td>
+        <td>{{ empresa.localizacao }}</td>
+        <td>{{ empresa.setor }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
