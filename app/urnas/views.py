@@ -16,11 +16,11 @@ def cadastrar_urna():
 
 @urnas_blueprint.route('/criar_urna', methods=["POST"],)
 def criar_urna():
-    id = request.form["id"]
+    print("oi")
     local = request.form["local"]
     fabricante_id = int(request.form["fabricante_id"])
     print(local)
     print(fabricante_id)
-    # urna = Urna(local=local, fabricante_id=fabricante_id)
-    # salvar_urna(urna)
+    urna = Urna(local=local, fabricante_id=fabricante_id)
+    salvar_urna(urna)
     return redirect('/urnas')
