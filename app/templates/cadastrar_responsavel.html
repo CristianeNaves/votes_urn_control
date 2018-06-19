@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/criar_responsavel" method="post">
+      <fieldset>
+        <div>
+          <label for="cpf">CPF:</label>
+          <input type="text" name="cpf">
+        </div>
+        <div>
+          <label for="nome">Nome:</label>
+          <input type="text" name="nome">
+        </div>
+        <div>
+          <label for="data_nasc">Data Nasc.:</label>
+          <input type="date" name="data_nasc">
+        </div>
+        <div>
+          <label for="cartorio_id">Cartorio:</label>
+          <select name="cartorio_id">
+            {% for cart in cartorios %}
+            <option value="{{ cart.id }}">{{ cart.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+    </fieldset>
+    </form>
+  </body>
+</html>
