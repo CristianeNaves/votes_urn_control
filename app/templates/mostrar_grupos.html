@@ -19,6 +19,18 @@
         <td>{{ grupo.nome }}</td>
         <td>{{ grupo.descricao }}</td>
         <td>{{ grupo.chefe }}</td>
+        <td>
+          <form action="/link_alterar_grupo" method="post">
+            <input type="hidden" name="sigla" value="{{ grupo.sigla }}">
+            <button type="submit" class="btn btn-primary btn-salvar">Editar</button>
+          </form>
+        </td>
+        <td>
+          <form action="/remover_grupo" method="post">
+            <input type="hidden" name="sigla" value="{{ grupo.sigla }}">
+            <button type="submit" class="btn btn-primary btn-salvar">Delete</button>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </table>

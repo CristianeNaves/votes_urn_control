@@ -9,6 +9,7 @@ drop table if exists fabricantes;
 drop table if exists cartorios;
 drop table if exists estado;
 drop table if exists log;
+drop table if exists responsaveis;
 
 create table users (
   id integer primary key autoincrement,
@@ -142,18 +143,22 @@ create table usuario_logs(
 create table logs(
   id integer primary key autoincrement,
   data_ DATETIME,
-  tipo_requisicao VARCHAR(45),	
-  parametros VARCHAR(45),	
-  resultado VARCHAR(45)	
+  tipo_requisicao VARCHAR(45),
+  parametros VARCHAR(45),
+  resultado VARCHAR(45)
 );
 
+create table responsaveis (
+  cpf integer primary key,
+  nome VARCHAR(45) not null,
+  data_nasc DATETIME,
+  cartorio_id integer not null,
+  FOREIGN KEY(cartorio_id) REFERENCES cartorios(id)
+);
 
 
 /*
 
-create table responsavel (
-
-);
 
 
 create table cargos_estado (

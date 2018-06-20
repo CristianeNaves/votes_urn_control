@@ -27,3 +27,17 @@ def buscar_funcoes():
         funcoes.append(funcao)
     con.close()
     return funcoes
+
+def atualizar_funcao(id, nome, descricao, setor):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("UPDATE funcoes SET nome = ?, descricao = ?, setor = ? WHERE id = ?", (nome, descricao, setor, id))
+    con.commit()
+    con.close()
+
+def deletar_funcao(id):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("DELETE FROM funcoes WHERE id = (?)", (id,))
+    con.commit()
+    con.close()

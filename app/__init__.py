@@ -17,6 +17,7 @@ from app.usuarios.views import usuarios_blueprint
 from app.empresas.views import empresas_blueprint
 from app.funcoes.views import funcoes_blueprint
 from app.grupos.views import grupos_blueprint
+from app.responsaveis.views import responsaveis_blueprint
 
 
 app.register_blueprint(users_blueprint)
@@ -31,6 +32,7 @@ app.register_blueprint(empresas_blueprint)
 app.register_blueprint(funcoes_blueprint)
 app.register_blueprint(grupos_blueprint)
 app.register_blueprint(usuarios_blueprint)
+app.register_blueprint(responsaveis_blueprint)
 
 DATABASE = './app/database.db'
 

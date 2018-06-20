@@ -27,3 +27,17 @@ def buscar_empresas():
         empresas.append(empresa)
     con.close()
     return empresas
+
+def atualizar_empresa(id, nome, localizacao, setor):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("UPDATE empresas SET nome = ?, localizacao = ?, setor = ? WHERE id = ?", (nome, localizacao, setor, id))
+    con.commit()
+    con.close()
+
+def deletar_empresa(id):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("DELETE FROM empresas WHERE id = (?)", (id,))
+    con.commit()
+    con.close()

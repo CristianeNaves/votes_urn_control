@@ -12,10 +12,10 @@ def mostrar_usuarios():
     usuarios = buscar_usuarios()
     return render_template("mostrar_usuarios.html", usuarios = usuarios)
 
-# @usuarios_blueprint.route('/editar_usuario/<int:usuario_id>', methods=["POST",])
-# def editar_usuario(usuario_id):
-#     print(usuario_id)
-#     return redirect("/usuarios")
+@usuarios_blueprint.route('/editar_usuario/<int:usuario_id>', methods=["POST",])
+def editar_usuario(usuario_id):
+    print(usuario_id)
+    return redirect("/usuarios")
 
 # @usuarios_blueprint.route('/deletar_usuario/<int:usuario_id>', methods=["POST",])
 # def deletar_usuario(usuario_id):

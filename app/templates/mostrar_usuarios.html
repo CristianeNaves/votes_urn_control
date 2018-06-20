@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Usuários</h1>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Função</th>
+        <th>Empresa</th>
+        <th>grupo</th>
+        <!-- <th>Cartório</th> -->
+      </tr>
+      {% for usuario in usuarios%}
+      <tr>
+        <td>{{ usuario.nome }}</td>
+        <td>{{ usuario.funcao_id}}</td>
+        <td>{{ usuario.empresa_id }}</td>
+        <td>{{ usuario.grupo_sigla }}</td>
+        <!-- <td>{{ usuario.cartorio_id }}</td> -->
+        <td>
+            <form action="/link_alterar_usuario" method="post">
+              <input type="hidden" name="id" value="{{ usuario.id }}">
+              <button type="submit" class="btn btn-primary btn-salvar">Editar</button>
+            </form>
+          </td>
+          <td>
+            <form action="/remover_usuario" method="post">
+              <input type="hidden" name="id" value="{{ usuario.id }}">
+              <button type="submit" class="btn btn-primary btn-salvar">Delete</button>
+            </form>
+          </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
