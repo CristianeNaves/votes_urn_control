@@ -17,6 +17,10 @@
         <td>{{ fab.local }}</td>
         <td>{{ fab.data_fabricacao }}</td>
         <td>{{ fab.empresa }}</td>
+        <td><form action="/remover_fabricante" method="post">
+                <input type="hidden" name="id" value="{{ fab.id }}">
+              <button type="submit" class="btn btn-primary btn-salvar">Delete</button>
+          </form></td>
       </tr>
       {% endfor %}
     </table>
