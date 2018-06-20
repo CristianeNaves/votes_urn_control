@@ -33,3 +33,10 @@ def deletar_engenheiro(cpf):
     cur.execute("DELETE FROM engenheiros WHERE cpf = (?)", (cpf,))
     con.commit()
     con.close()
+
+def update_engenheiro(cpf, nome, formacao, crea):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("UPDATE engenheiros SET crea = ?, nome = ?, formacao = ? WHERE cpf = ?", (crea, nome, formacao, cpf))
+    con.commit()
+    con.close()
