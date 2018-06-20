@@ -26,3 +26,10 @@ def get_engenheiros():
         engenheiros.append(engenheiro)
     con.close()
     return engenheiros
+
+def deletar_engenheiro(cpf):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("DELETE FROM engenheiros WHERE cpf = (?)", (cpf,))
+    con.commit()
+    con.close()

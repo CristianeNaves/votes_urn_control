@@ -133,14 +133,14 @@ create table estado(
   FOREIGN KEY(cartorios_id) REFERENCES cartorios(id)
 );
 
-create table usuario_logs(
+create table if not exists usuario_logs(
   log_id integer,
   usuarios_id integer,
   FOREIGN KEY(log_id) REFERENCES logs(id),
   FOREIGN KEY(usuarios_id) REFERENCES usuarios(id)
 );
 
-create table logs(
+create table if not exists logs(
   id integer primary key autoincrement,
   data_ DATETIME,
   tipo_requisicao VARCHAR(45),
