@@ -33,3 +33,10 @@ def deletar_responsavel(cpf):
     cur.execute("DELETE FROM responsaveis WHERE cpf = (?)", (cpf,))
     con.commit()
     con.close()
+
+def update_responsavel(cpf, nome, data_nasc):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("UPDATE responsaveis SET nome = ?, data_nasc = ? WHERE cpf = ?", (nome, data_nasc, cpf))
+    con.commit()
+    con.close()
