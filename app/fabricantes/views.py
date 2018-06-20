@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, request
-from .fabricantesDAO import Fabricante, get_fabricantes, salvar_fabricante, deletar_fabricante
+from .fabricantesDAO import Fabricante, get_fabricantes, salvar_fabricante, deletar_fabricante, update_fabricante
 from app.engenheiros.engenheirosDAO import get_engenheiros
 
 fabricantes_blueprint = Blueprint('fabricantes', __name__, template_folder='templates')
@@ -29,3 +29,17 @@ def remover_fabricante():
     id = request.form["id"]
     deletar_fabricante(id)
     return redirect('/fabricantes')
+
+@fabricantes_blueprint.route('/alterar_fabricante', methods=["POST"])
+def alterar_fabricante():
+    local = request.form["local"]
+    data_fabricacao = request.form["data_fabricacao"]
+    empresa = request.form["empresa"]
+    id = request.form["id"]
+    update_fabricante(id, local, data_fabricacao, empresa)
+    return redirect('/fabricantes')
+
+@fabricantes_blueprint.route('/link_alterar_fabricante', methods=["POST"])
+def link_alterar_fabricante():
+    id = request.form["id"]
+    return render_template('edit_fabricante.html', id = id)
