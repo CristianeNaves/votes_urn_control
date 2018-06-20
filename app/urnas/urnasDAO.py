@@ -33,3 +33,10 @@ def deletar_urna(id):
     cur.execute("DELETE FROM urnas WHERE id = (?)", (id,))
     con.commit()
     con.close()
+
+def update_urna(id, local):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("UPDATE urnas SET local = ? WHERE id = ?", (local, id))
+    con.commit()
+    con.close()
