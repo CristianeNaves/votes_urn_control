@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Responsaveis</h1>
+    <table>
+      <tr>
+        <th>CPF</th>
+        <th>Nome</th>
+        <th>Data Nasc</th>
+      </tr>
+      {% for resp in responsaveis %}
+      <tr>
+        <td>{{ resp.cpf }}</td>
+        <td>{{ resp.nome }}</td>
+        <td>{{ resp.data_nasc }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
