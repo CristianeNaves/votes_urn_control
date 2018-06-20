@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, request
-from .candidatosDAO import Candidato, buscar_candidatos, salvar_candidato
+from .candidatosDAO import Candidato, buscar_candidatos, salvar_candidato, deletar_candidato, editar_candidato, buscar_candidato
 from app.partidos.partidosDAO import buscar_partidos
 from app.cargos.cargosDAO import buscar_cargos
 
@@ -10,19 +10,35 @@ def mostrar_candidatos():
     candidatos = buscar_candidatos()
     return render_template("mostrar_candidatos.html", candidatos = candidatos) #colocar opcao de editar e deletar
 
-@candidatos_blueprint.route('/editar_candidato/<int:candidato_id>', methods=["POST",])
-def editar_candidato(candidato_id):
-    print(candidato_id)
-    return redirect("/votar")
+@candidatos_blueprint.route('/criar_edicao', methods=["POST",])
+def criar_edicao():
+    nome = request.form["nome"]
+    candidato_id = request.form["candidato_id"]
+    vice_id = request.form["vice"]
+    partido_id = request.form["partido"]
+    cargo_id = request.form["cargo"]
+    editar_candidato(candidato_id, nome, vice_id, partido_id, cargo_id)
+    return redirect('/candidatos')
 
-@candidatos_blueprint.route('/deletar_candidato/<int:candidato_id>', methods=["POST",])
-def deletar_candidato(candidato_id):
+@candidatos_blueprint.route('/editar_candidato/<int:candidato_id>')
+def editar_candidato_view(candidato_id):
     print(candidato_id)
-    return redirect("/votar")
+    candidatos_vice = buscar_candidatos()
+    cargos = buscar_cargos()
+    partidos = buscar_partidos()
+    candidato = buscar_candidato(candidato_id)
+    print(candidato)
+    return render_template("editar_candidato.html", candidato = candidato, candidatos_vice=candidatos_vice, cargos=cargos, partidos=partidos)
+
+@candidatos_blueprint.route('/deletar_candidato', methods=["POST",])
+def deletar_candidato_view():
+    print("deletar")
+    candidato_id = request.form["candidato_id"]
+    deletar_candidato(candidato_id)
+    return redirect("/candidatos")
 
 @candidatos_blueprint.route('/criar_candidato', methods=["POST"])
 def criar_candidato():
-    print("Aqui")
     nome = request.form["nome"]
     foto = request.form["foto"]
     if(request.args.get("vice")):
@@ -32,15 +48,9 @@ def criar_candidato():
     cargo_id = request.form["cargo"]
     partido_id = request.form["partido"]
 
-    print(nome)
-    print(foto)
-    print(vice_id)
-    print(cargo_id)
-    print(partido_id)
-
     candidato = Candidato(nome=nome,foto=foto, vice_id=vice_id, cargo_id=cargo_id, partido_id=partido_id)
     salvar_candidato(candidato)
-    return render_template("index.html")
+    return redirect("/candidatos")
 
 @candidatos_blueprint.route('/cadastrar_candidato')
 def cadastrar_candidato():

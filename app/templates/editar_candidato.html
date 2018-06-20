@@ -5,21 +5,22 @@
     <title>UrnVotes</title>
   </head>
   <body>
-    <h1>Cadastrar Candidato</h1>
-    <form action="/criar_candidato" method="post">
+    <h1>Editar {{ candidato.nome }}</h1>
+    <form action="/criar_edicao" method="post">
       <fieldset>
         <div>
           <label for="nome">Nome:</label>
-          <input type="text" name="nome">
+          <input type="text" name="nome" placeholder="{{ candidato.nome }}">
         </div>
         <div>
           <label for="foto">Foto:</label>
-          <input type="file" name="foto" accept="image/*">
+          <input type="file" name="foto" accept="image/*" placeholder="{{ candidato.foto }}">
         </div>
 
         <div>
           <label for="vice">Vice:</label>
           <select name="vice">
+            <!--<option value=""></option>-->
             {% for candidato_vice in candidatos_vice %}
             <option value="{{ candidato_vice.id }}">{{ candidato_vice.nome }}</option>
             {% endfor %}
@@ -43,7 +44,7 @@
             {% endfor %}
           </select>
         </div>
-
+        <input type="hidden" name="candidato_id" value="{{ candidato.id }}">
         <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
     </fieldset>
     </form>

@@ -17,6 +17,15 @@
           <input type="radio" name="id_candidato" value="{{ candidato.id }}">
         </div>
         {% endfor %}
+
+        <div>
+          <label for="urna">Urna:</label>
+          <select name="urna_id">
+            {% for urna in urnas %}
+            <option value="{{ urna.id }}">{{ urna.id }}</option>
+            {% endfor %}
+          </select>
+        </div>
         <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
     </fieldset>
     </form>

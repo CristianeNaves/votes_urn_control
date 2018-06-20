@@ -19,6 +19,17 @@
         <td>{{ cargo.descricao }}</td>
         <td>{{ cargo.poder }}</td>
         <td>{{ cargo.local_trabalho }}</td>
+        <td>
+          <a href="/editar_cargo/{{ cargo.id }}">Editar</a>
+        </td>
+        <td>
+          <form action="/deletar_cargo" method="post">
+            <fieldset>
+              <input type="hidden" value="{{ cargo.id }}" name="cargo_id">
+              <button type="submit">Excluir</button>
+            </fieldset>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </table>

@@ -27,18 +27,3 @@ def get_fabricantes():
         fabricantes.append(fabricante)
     con.close()
     return fabricantes
-
-def deletar_fabricante(id):
-    con = sqlite3.connect(DATABASE)
-    cur = con.cursor()
-    id = str(id)
-    cur.execute("DELETE FROM fabricantes WHERE id = (?)", (id,))
-    con.commit()
-    con.close()
-
-def update_fabricante(id, local, data, empresa):
-    con = sqlite3.connect(DATABASE)
-    cur = con.cursor()
-    cur.execute("UPDATE fabricantes SET local = ?, data_fabricacao = ?, empresa = ? WHERE id = ?", (local, data, empresa, id))
-    con.commit()
-    con.close()

@@ -25,18 +25,3 @@ def buscar_urnas():
         urnas.append(urna)
     con.close()
     return urnas
-
-def deletar_urna(id):
-    con = sqlite3.connect(DATABASE)
-    cur = con.cursor()
-    id = str(id)
-    cur.execute("DELETE FROM urnas WHERE id = (?)", (id,))
-    con.commit()
-    con.close()
-
-def update_urna(id, local):
-    con = sqlite3.connect(DATABASE)
-    cur = con.cursor()
-    cur.execute("UPDATE urnas SET local = ? WHERE id = ?", (local, id))
-    con.commit()
-    con.close()
