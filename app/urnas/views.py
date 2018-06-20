@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, request
-from .urnasDAO import salvar_urna, buscar_urnas, Urna
+from .urnasDAO import salvar_urna, buscar_urnas, Urna, deletar_urna
 from app.fabricantes.fabricantesDAO import get_fabricantes
 
 urnas_blueprint = Blueprint('urnas', __name__, template_folder='templates')
@@ -16,11 +16,14 @@ def cadastrar_urna():
 
 @urnas_blueprint.route('/criar_urna', methods=["POST"],)
 def criar_urna():
-    print("oi")
     local = request.form["local"]
     fabricante_id = int(request.form["fabricante_id"])
-    print(local)
-    print(fabricante_id)
     urna = Urna(local=local, fabricante_id=fabricante_id)
     salvar_urna(urna)
+    return redirect('/urnas')
+
+@urnas_blueprint.route('/remover_urna', methods=["POST"])
+def remover_urna():
+    id = request.form["id"]
+    deletar_urna(id)
     return redirect('/urnas')

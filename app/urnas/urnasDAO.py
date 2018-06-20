@@ -25,3 +25,11 @@ def buscar_urnas():
         urnas.append(urna)
     con.close()
     return urnas
+
+def deletar_urna(id):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    id = str(id)
+    cur.execute("DELETE FROM urnas WHERE id = (?)", (id,))
+    con.commit()
+    con.close()
