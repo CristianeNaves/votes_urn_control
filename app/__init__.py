@@ -8,18 +8,34 @@ app = Flask(__name__, instance_relative_config=True)
 from app.votos.views import votos_blueprint
 from app.partidos.views import partidos_blueprint
 from app.cargos.views import cargos_blueprint
-from app.candidatos.views import candidatos_blueprint
 from app.engenheiros.views import engenheiros_blueprint
+from app.fabricantes.views import fabricantes_blueprint
+from app.urnas.views import urnas_blueprint
+from app.candidatos.views import candidatos_blueprint
+from app.usuarios.views import usuarios_blueprint
+from app.empresas.views import empresas_blueprint
+from app.funcoes.views import funcoes_blueprint
+from app.grupos.views import grupos_blueprint
+from app.responsaveis.views import responsaveis_blueprint
+
 
 app.register_blueprint(votos_blueprint)
 app.register_blueprint(partidos_blueprint)
 app.register_blueprint(cargos_blueprint)
-app.register_blueprint(candidatos_blueprint)
 app.register_blueprint(engenheiros_blueprint)
+app.register_blueprint(fabricantes_blueprint)
+app.register_blueprint(urnas_blueprint)
+app.register_blueprint(candidatos_blueprint)
+app.register_blueprint(empresas_blueprint)
+app.register_blueprint(funcoes_blueprint)
+app.register_blueprint(grupos_blueprint)
+app.register_blueprint(usuarios_blueprint)
+app.register_blueprint(responsaveis_blueprint)
 
 @app.route('/')
 def index():
     return render_template("index.html")
+
 
 DATABASE = './app/database.db'
 

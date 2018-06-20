@@ -20,6 +20,17 @@
         <td>{{ voto.horario }}</td>
         <td>{{ voto.regiao }}</td>
         <td>{{ voto.urna_id }}</td>
+        <td>
+          <a href="/editar_voto/{{ voto.id }}">Editar</a>
+        </td>
+        <td>
+          <form action="/deletar_voto" method="post">
+            <fieldset>
+              <input type="hidden" value="{{ voto.id }}" name="voto_id">
+              <button type="submit">Excluir</button>
+            </fieldset>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </table>

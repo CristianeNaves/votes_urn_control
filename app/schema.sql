@@ -1,6 +1,15 @@
 drop table if exists users;
 drop table if exists cargos;
+drop table if exists empresas;
+drop table if exists grupos;
+drop table if exists funcoes;
+drop table if exists usuarios;
 drop table if exists engenheiros;
+drop table if exists fabricantes;
+drop table if exists cartorios;
+drop table if exists estado;
+drop table if exists log;
+drop table if exists responsaveis;
 
 create table users (
   id integer primary key autoincrement,
@@ -47,6 +56,40 @@ create table if not exists partidos (
   nome VARCHAR(25) not null
 );
 
+create table usuarios (
+  id integer primary key autoincrement,
+  nome VARCHAR(45),
+  funcao_id integer,
+  empresa_id integer,
+  grupo_sigla VARCHAR(10),
+  cartorio_id integer not null,
+  FOREIGN KEY(funcao_id) REFERENCES funcao(id),
+  FOREIGN KEY(empresa_id) REFERENCES empresa(id),
+  FOREIGN KEY(grupo_sigla) REFERENCES grupo(sigla),
+  FOREIGN KEY(cartorio_id) REFERENCES cartorio(id)
+);
+
+create table empresas (
+  id integer primary key autoincrement,
+  nome VARCHAR(45),
+  localizacao VARCHAR(45),
+  setor VARCHAR(45)
+);
+
+create table funcoes (
+  id integer primary key autoincrement,
+  nome VARCHAR(45),
+  descricao VARCHAR(45),
+  setor VARCHAR(45)
+);
+
+create table grupos (
+  sigla VARCHAR(10) primary key,
+  nome VARCHAR(45),
+  descricao VARCHAR(45),
+  chefe VARCHAR(45)
+);
+
 create table engenheiros (
   cpf integer primary key,
   crea VARCHAR(45),
@@ -54,56 +97,72 @@ create table engenheiros (
   formacao VARCHAR(45)
 );
 
+create table fabricantes (
+  id integer primary key autoincrement,
+  local VARCHAR(45),
+  data_fabricacao DATETIME,
+  empresa VARCHAR(45),
+  engenheiro_cpf integer not null,
+  FOREIGN KEY(engenheiro_cpf) REFERENCES engenheiros(cpf)
+);
+
+
 --Criando tabela para testar a entidade voto - esta imcompleta
 
 create table if not exists urnas (
   id integer primary key autoincrement,
-  local VARCHAR(45)
+  local VARCHAR(45),
+  fabricante_id integer not null,
+  FOREIGN KEY(fabricante_id) REFERENCES fabricantes(id)
 );
+
+create table cartorios(
+  id integer primary key autoincrement,
+  nome VARCHAR(45),
+  estado_id integer,
+  FOREIGN KEY(estado_id) REFERENCES estado(id)
+);
+
+create table estado(
+  id integer primary key autoincrement,
+  nome VARCHAR(50),
+  sigla char(2),
+  cargos_id integer,
+  cartorios_id integer,
+  FOREIGN KEY(cargos_id) REFERENCES cargos(id),
+  FOREIGN KEY(cartorios_id) REFERENCES cartorios(id)
+);
+
+create table usuario_logs(
+  log_id integer,
+  usuarios_id integer,
+  FOREIGN KEY(log_id) REFERENCES logs(id),
+  FOREIGN KEY(usuarios_id) REFERENCES usuarios(id)
+);
+
+create table logs(
+  id integer primary key autoincrement,
+  data_ DATETIME,
+  tipo_requisicao VARCHAR(45),
+  parametros VARCHAR(45),
+  resultado VARCHAR(45)
+);
+
+create table responsaveis (
+  cpf integer primary key,
+  nome VARCHAR(45) not null,
+  data_nasc DATETIME,
+  cartorio_id integer not null,
+  FOREIGN KEY(cartorio_id) REFERENCES cartorios(id)
+);
+
 
 /*
-create table fabricantes (
-
-);
 
 
-create table responsavel (
-
-);
-
-create table cartorios (
-
-);
-
-create table estado (
-
-);
 
 create table cargos_estado (
 
 );
 
-create table usuarios (
-
-);
-
-create table logs (
-
-);
-
-create table usuario_logs(
-
-);
-
-create table empresa (
-
-);
-
-create table funcao (
-
-);
-
-create table grupo (
-
-);
 */

@@ -28,3 +28,27 @@ def buscar_votos():
         votos.append(voto)
     con.close()
     return votos
+
+def deletar_voto(voto_id):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute(
+        "DELETE from votos where id = ?",(voto_id)
+    )
+    con.commit()
+    con.close()
+
+def buscar_regiao(voto_id):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("SELECT regiao FROM votos WHERE id = ?", (voto_id,))
+    regiao = cur.fetchall()[0]
+    con.close()
+    return regiao
+
+def editar_voto(voto_id, regiao):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("UPDATE votos SET regiao = ? WHERE id = ?", (regiao,voto_id))
+    con.commit()
+    con.close()
