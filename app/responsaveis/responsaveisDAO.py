@@ -26,3 +26,10 @@ def get_responsaveis():
         responsavels.append(responsavel)
     con.close()
     return responsaveis
+
+def deletar_responsavel(cpf):
+    con = sqlite3.connect(DATABASE)
+    cur = con.cursor()
+    cur.execute("DELETE FROM responsaveis WHERE cpf = (?)", (cpf,))
+    con.commit()
+    con.close()
