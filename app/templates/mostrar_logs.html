@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Logs</title>
+  </head>
+  <body>
+    <h1>Logs</h1>
+    <table>
+      <tr>
+        <th>Data</th>
+        <th>Requisição</th>
+        <th>Parametros</th>
+        <th>Resultado</th>
+      </tr>
+      {% for logs in logs%}
+      <tr>
+        <td>{{ logs.data_ }}</td>
+        <td>{{ logs.tipo_requisicao }}</td>
+        <td>{{ logs.parametros }}</td>
+        <td>{{ logs.resultado }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

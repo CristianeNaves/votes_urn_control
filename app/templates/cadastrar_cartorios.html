@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cartórios</title>
+  </head>
+  <body>
+    <h1>Edit</h1>
+    <form action="/salvar_cartorios" method="post">
+      <fieldset>
+        <div>
+          <input type="hidden" name="id" value="{{ id }}">
+        </div>
+        <div>
+          <label for="nome">Nome:</label>
+          <input type="text" name="nome">
+        </div>
+
+        <div>
+          <label for="estado">Partido:</label>
+          <select name="estado">
+            {% for estado in estado %}
+            <option value="{{ estado.nome }}">{{ estado.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+    </fieldset>
+    </form>
+  </body>
+</html>
