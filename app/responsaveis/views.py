@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, request
-from .responsaveisDAO import Responsavel, get_responsaveis, salvar_responsavel
+from .responsaveisDAO import Responsavel, get_responsaveis, salvar_responsavel, deletar_responsavel
 
 responsaveis_blueprint = Blueprint('responsaveis', __name__, template_folder='templates')
 
@@ -20,4 +20,10 @@ def criar_responsavel():
     cartorio_id = request.form["cargos_id"]
     resp = responsavel(nome=nome, data_nasc=data_nasc, cartorio_id=cartorio_id, cpf=cpf)
     salvar_responsavel(resp)
+    return redirect('/responsaveis')
+
+@responsaveis_blueprint.route('/remover_responsavel', methods=["POST"])
+def remover_responsavel():
+    cpf = request.form["cpf"]
+    deletar_responsavel(cpf)
     return redirect('/responsaveis')

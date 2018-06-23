@@ -17,17 +17,6 @@
         <td>{{ partido.nome }}</td>
         <td>{{ partido.data_fundacao }}</td>
         <td>{{ partido.lider }}</td>
-        <td>
-          <a href="/editar_partido/{{ partido.id }}">Editar</a>
-        </td>
-        <td>
-          <form action="/deletar_partido" method="post">
-            <fieldset>
-              <input type="hidden" value="{{ partido.id }}" name="partido_id">
-              <button type="submit">Excluir</button>
-            </fieldset>
-          </form>
-        </td>
       </tr>
       {% endfor %}
     </table>

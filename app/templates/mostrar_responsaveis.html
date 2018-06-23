@@ -17,6 +17,10 @@
         <td>{{ resp.cpf }}</td>
         <td>{{ resp.nome }}</td>
         <td>{{ resp.data_nasc }}</td>
+        <td><form action="/remover_responsavel" method="post">
+                <input type="hidden" name="cpf" value="{{ resp.cpf }}">
+              <button type="submit" class="btn btn-primary btn-salvar">Delete</button>
+          </form></td>
       </tr>
       {% endfor %}
     </table>
