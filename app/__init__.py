@@ -1,11 +1,10 @@
 #setting up the Flask application and registering the different Blueprints
-from flask import Flask, g
+from flask import Flask, g, render_template
 import sqlite3
 
 
 app = Flask(__name__, instance_relative_config=True)
 
-from app.users.views import users_blueprint
 from app.votos.views import votos_blueprint
 from app.partidos.views import partidos_blueprint
 from app.cargos.views import cargos_blueprint
@@ -18,9 +17,10 @@ from app.empresas.views import empresas_blueprint
 from app.funcoes.views import funcoes_blueprint
 from app.grupos.views import grupos_blueprint
 from app.responsaveis.views import responsaveis_blueprint
+from app.cartorios.views import cartorios_blueprint
+from app.estado.views import estados_blueprint
 
 
-app.register_blueprint(users_blueprint)
 app.register_blueprint(votos_blueprint)
 app.register_blueprint(partidos_blueprint)
 app.register_blueprint(cargos_blueprint)
@@ -33,6 +33,13 @@ app.register_blueprint(funcoes_blueprint)
 app.register_blueprint(grupos_blueprint)
 app.register_blueprint(usuarios_blueprint)
 app.register_blueprint(responsaveis_blueprint)
+app.register_blueprint(cartorios_blueprint)
+app.register_blueprint(estados_blueprint)
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
 
 DATABASE = './app/database.db'
 

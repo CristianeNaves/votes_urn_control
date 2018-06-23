@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>UrnVotes</title>
+  </head>
+  <body>
+    <h1>Editar {{ partido.nome }}</h1>
+    <form action="/criar_edicao_partido" method="post">
+      <fieldset>
+        <div>
+          <label for="nome">Nome:</label>
+          <input type="text" name="nome" placeholder="{{ partido.nome }}">
+        </div>
+        <div>
+          <label for="lider">Líder:</label>
+          <input type="text" name="lider" placeholder="{{ partido.lider }}">
+        </div>
+        <div>
+          <label for="data">Data de fundação:</label>
+          <input type="date" name="data" placeholder="{{ partido.data_fundacao }}">
+        </div>
+        <input type="hidden" name="partido_id" value="{{ partido.id }}">
+        <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+    </fieldset>
+    </form>
+  </body>
+</html>

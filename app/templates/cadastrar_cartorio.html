@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>UrnVotes</title>
+  </head>
+  <body>
+    <h1>Cadastrar Cartório</h1>
+    <form action="/criar_cartorio" method="post">
+      <fieldset>
+        <div>
+          <label for="nome">Nome:</label>
+          <input type="text" name="nome">
+        </div>
+
+        <div>
+          <label for="estado">Estado:</label>
+          <select name="estado">
+            {% for estado in estados %}
+            <option value="{{ estado.id }}">{{ estado.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+    </fieldset>
+    </form>
+  </body>
+</html>

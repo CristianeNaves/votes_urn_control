@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>UrnVotes</title>
+  </head>
+  <body>
+    <h1>Edit</h1>
+    <form action="/atualizar_usuario" method="post">
+      <fieldset>
+        <div>
+          <label for="nome">Nome:</label>
+          <input type="text" name="nome">
+        </div>
+
+        <div>
+          <label for="funcao">Função:</label>
+          <select name="funcao">
+            {% for funcao in funcoes %}
+            <option value="{{ funcao.id }}">{{ funcao.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label for="empresa">Empresa:</label>
+          <select name="empresa">
+            {% for empresa in empresas %}
+            <option value="{{ empresa.id }}">{{ empresa.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label for="grupo">Grupo:</label>
+          <select name="grupo">
+            {% for grupo in grupos %}
+            <option value="{{ grupo.sigla }}">{{ grupo.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+            <label for="cartorio">Cartório:</label>
+            <select name="cartorio">
+              {% for cartorio in cartorios %}
+              <option value="{{ cartorio.id }}">{{ cartorio.nome }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+        <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+    </fieldset>
+    </form>
+  </body>
+</html>

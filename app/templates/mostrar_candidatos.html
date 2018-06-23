@@ -21,11 +21,17 @@
         <td>{{ candidato.vice_id }}</td>
         <td>{{ candidato.cargo_id }}</td>
         <td>{{ candidato.partido_id }}</td>
+
         <td>
-          <a href="/editar_candidato/{{ candidato.id }}" method="post">Editar</a>
+        <a href="/editar_candidato/{{ candidato.id }}">Editar</a>
         </td>
         <td>
-          <a href="/deletar_candidato/{{ candidato.id }}" method="post">Excluir</a>
+          <form action="/deletar_candidato" method="post">
+            <fieldset>
+              <input type="hidden" value="{{ candidato.id }}" name="candidato_id">
+              <button type="submit">Excluir</button>
+            </fieldset>
+          </form>
         </td>
       </tr>
       {% endfor %}

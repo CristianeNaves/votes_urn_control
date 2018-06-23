@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fabricante</title>
+  </head>
+  <body>
+    <h1>Edit</h1>
+    <form action="/alterar_fabricante" method="post">
+      <fieldset>
+        <div>
+          <input type="hidden" name="id" value="{{ id }}">
+        </div>
+        <div>
+          <label for="local">Local:</label>
+          <input type="text" name="local">
+        </div>
+        <div>
+          <label for="data_fabricacao">Data Fabr:</label>
+          <input type="text" name="data_fabricacao">
+        </div>
+        <div>
+          <label for="empresa">Empresa:</label>
+          <input type="text" name="empresa">
+        </div>
+        <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+    </fieldset>
+    </form>
+  </body>
+</html>
