@@ -26,5 +26,5 @@ def buscar_cartorios():
         cartorios.append(cartorio)
     con.close()
     return cartorios
-	
+
 	

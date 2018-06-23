@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, request
-from .partidosDAO import salvar_partido, buscar_partidos, Partido, deletar_partido, buscar_partido, editar_partido
+from .partidosDAO import salvar_partido, buscar_partidos, Partido
 
 partidos_blueprint = Blueprint('partidos', __name__, template_folder='templates')
 
@@ -20,24 +20,3 @@ def criar_partido():
     partido = Partido(nome=nome, data_fundacao=data_fundacao,lider=lider)
     salvar_partido(partido)
     return redirect('/partidos')
-
-@partidos_blueprint.route('/deletar_partido', methods=["POST",])
-def deletar_candidato_view():
-    print("deletar")
-    partido_id = request.form["partido_id"]
-    deletar_partido(partido_id)
-    return redirect("/partidos")
-
-@partidos_blueprint.route('/criar_edicao_partido', methods=["POST",])
-def criar_edicao():
-    nome = request.form["nome"]
-    lider = request.form["lider"]
-    data_fundacao = request.form["data"]
-    partido_id = request.form["partido_id"]
-    editar_partido(partido_id, nome, lider, data_fundacao)
-    return redirect('/partidos')
-
-@partidos_blueprint.route('/editar_partido/<int:partido_id>')
-def editar_candidato_view(partido_id):
-    partido = buscar_partido(partido_id)
-    return render_template("editar_partido.html", partido = partido)

@@ -2,49 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>UrnVotes</title>
+    <title>Cadastrar Estado</title>
   </head>
   <body>
-    <h1>Cadastrar Estado</h1>
-    <form action="/criar_estado" method="post">
+    <form action="/salvar_estado" method="post">
       <fieldset>
         <div>
           <label for="nome">Nome:</label>
           <input type="text" name="nome">
         </div>
-
         <div>
-                <label for="sigla">Sigla:</label>
-                <input type="text" name="sigla">
-              </div>
-
-        <div>
-          <label for="cargo">Cargo:</label>
-          <select name="cargo">
-            {% for cargo in cargos %}
-            <option value="{{ cargo.id }}">{{ cargo.nome }}</option>
-            {% endfor %}
-          </select>
+          <label for="sigla">Sigla:</label>
+          <input type="text" name="sigla">
         </div>
-
-        <div>
-          <label for="grupo">Grupo:</label>
-          <select name="grupo">
-            {% for grupo in grupos %}
-            <option value="{{ grupo.sigla }}">{{ grupo.nome }}</option>
-            {% endfor %}
-          </select>
-        </div>
-
-        <div>
-            <label for="cartorio">Cartório:</label>
-            <select name="cartorio">
-              {% for cartorio in cartorios %}
-              <option value="{{ cartorio.id }}">{{ cartorio.nome }}</option>
-              {% endfor %}
-            </select>
-          </div>
-
         <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
     </fieldset>
     </form>

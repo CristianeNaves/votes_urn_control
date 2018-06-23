@@ -8,7 +8,7 @@ drop table if exists engenheiros;
 drop table if exists fabricantes;
 drop table if exists cartorios;
 drop table if exists estado;
-drop table if exists logs;
+drop table if exists log;
 drop table if exists responsaveis;
 
 create table users (
@@ -157,6 +157,10 @@ create table responsaveis (
 
 /*
 
-create table cargos_estado ();
+
+
+create table cargos_estado (
+
+);
 
 */

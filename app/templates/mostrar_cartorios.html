@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cartórios:</title>
+  </head>
+  <body>
+    <h1>Cartórios</h1>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Estado</th>
+      </tr>
+      {% for cart in cartorios %}
+      <tr>
+        <td>{{ cart.nome }}</td>
+        <td>{{ fab.estado_id }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

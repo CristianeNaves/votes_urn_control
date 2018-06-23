@@ -15,6 +15,14 @@
       <tr>
         <td>{{ urna.id }}</td>
         <td>{{ urna.local }}</td>
+        <td><form action="/remover_urna" method="post">
+                <input type="hidden" name="id" value="{{ urna.id }}">
+              <button type="submit" class="btn btn-primary btn-salvar">Delete</button>
+          </form></td>
+        <td><form action="/link_alterar_urna" method="post">
+                <input type="hidden" name="id" value="{{ urna.id }}">
+              <button type="submit" class="btn btn-primary btn-salvar">Editar</button>
+          </form></td>
       </tr>
       {% endfor %}
     </table>
